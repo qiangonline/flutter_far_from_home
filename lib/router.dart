@@ -8,29 +8,49 @@ import 'package:flutter_far_from_home/about_page.dart';
 import 'package:flutter_far_from_home/my_page.dart';
 
 class Router {
-  static PageRoute generateRoute(RouteSettings settings) {
+  static PageRoute generateRoute(BuildContext context, RouteSettings settings) {
+    print('.........');
     switch (settings.name) {
       case HomePage.routeName:
-        return MaterialPageRoute(builder: (context) => HomePage());
+        return MaterialPageRoute(
+          builder: (context) => HomePage(),
+          settings: settings,
+        );
       case LoginPage.routeName:
         return MaterialPageRoute(
           builder: (context) => LoginPage(),
+          settings: settings,
           fullscreenDialog: true,
         );
       case AboutPage.routeName:
-        return MaterialPageRoute(builder: (context) => AboutPage());
+        return MaterialPageRoute(
+          builder: (context) => AboutPage(),
+          settings: settings,
+        );
       case MyPage.routeName:
-        return privatize(MyPage());
+        return privatize(
+          context: context,
+          page: MaterialPageRoute(
+            builder: (context) => MyPage(),
+            settings: settings,
+          ),
+        );
       default:
         print('no match route!');
         return null;
     }
   }
 
-  static PageRoute privatize(Widget widget) {
-    return MaterialPageRoute(
-      builder: (context) =>
-          Provider.of<AuthModel>(context).authorized ? widget : LoginPage(),
-    );
+  static PageRoute privatize({BuildContext context, MaterialPageRoute page}) {
+    bool authorized = Provider.of<AuthModel>(context).authorized;
+    if (authorized) {
+      return page;
+    } else {
+      return MaterialPageRoute(
+        builder: (context) => LoginPage(),
+        settings: RouteSettings(name: LoginPage.routeName),
+        fullscreenDialog: true,
+      );
+    }
   }
 }

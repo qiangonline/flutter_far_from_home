@@ -3,11 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:flutter_far_from_home/auth_model.dart';
 import 'package:flutter_far_from_home/login_page.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   static const String routeName = '/about';
 
   AboutPage({Key key}) : super(key: key);
 
+  _AboutPageState createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
