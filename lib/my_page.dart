@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+
+import 'package:provider/provider.dart';
+import 'package:flutter_far_from_home/auth_model.dart';
+import 'package:flutter_far_from_home/login_page.dart';
 import 'package:chewie/chewie.dart';
 
 class MyPage extends StatefulWidget {
@@ -51,11 +55,24 @@ class _MyPageState extends State<MyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('my')),
-      body: Center(
-        child: Chewie(
+      body: Column(children: [
+        Chewie(
           controller: _chewieController,
         ),
-      ),
+        Consumer<AuthModel>(
+          builder: (context, value, child) {
+            return RaisedButton(
+              color: Theme.of(context).primaryColor,
+              textColor: Colors.white,
+              onPressed: () {
+                value.authrozie(false);
+                Navigator.pop(context);
+              },
+              child: Text('logout'),
+            );
+          },
+        ),
+      ]),
     );
   }
 }

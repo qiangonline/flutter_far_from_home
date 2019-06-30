@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_far_from_home/home_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_far_from_home/app_route_observer.dart';
 
 import 'package:flutter_far_from_home/router.dart';
 import 'package:flutter_far_from_home/auth_model.dart';
-import 'package:flutter_far_from_home/splash_page.dart';
 
 void main() => runApp(Provider<AuthModel>(
       builder: (context) => AuthModel(),
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SplashPage(),
+      initialRoute: HomePage.routeName,
       onGenerateRoute: (setting) => Router.generateRoute(context, setting),
       navigatorObservers: [routeObserver],
     );

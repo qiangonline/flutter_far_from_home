@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_far_from_home/auth_model.dart';
-import 'package:flutter_far_from_home/login_page.dart';
 
 class AboutPage extends StatefulWidget {
   static const String routeName = '/about';
@@ -16,32 +13,8 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('about')),
-      body: Consumer<AuthModel>(
-        builder: (context, value, child) => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('about'),
-                  !value.authorized
-                      ? RaisedButton(
-                          color: Theme.of(context).primaryColor,
-                          textColor: Colors.white,
-                          onPressed: () {
-                            Navigator.pushNamed(context, LoginPage.routeName);
-                          },
-                          child: Text('login'),
-                        )
-                      : RaisedButton(
-                          color: Theme.of(context).primaryColor,
-                          textColor: Colors.white,
-                          onPressed: () {
-                            value.authrozie(false);
-                          },
-                          child: Text('logout'),
-                        )
-                ],
-              ),
-            ),
+      body: Center(
+        child: Text('about'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
