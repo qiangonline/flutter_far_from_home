@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {
@@ -9,12 +11,43 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  double _width;
+  double _height;
+  Color _color;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('about')),
-      body: Center(
-        child: Text('about'),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedContainer(
+                width: _width,
+                height: _height,
+                decoration: BoxDecoration(color: _color),
+                duration: Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn,
+              ),
+              RaisedButton(
+                child: Text('animate'),
+                onPressed: () {
+                  setState(() {
+                    final random = Random();
+                    _width = random.nextInt(300).toDouble();
+                    _height = random.nextInt(300).toDouble();
+                    _color = Color.fromRGBO(random.nextInt(256),
+                        random.nextInt(256), random.nextInt(256), 1);
+                  });
+                },
+              ),
+              Text('about'),
+            ],
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

@@ -3,7 +3,6 @@ import 'package:video_player/video_player.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_far_from_home/auth_model.dart';
-import 'package:flutter_far_from_home/login_page.dart';
 import 'package:chewie/chewie.dart';
 
 class MyPage extends StatefulWidget {

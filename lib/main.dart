@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_far_from_home/home_page.dart';
 import 'package:provider/provider.dart';
@@ -7,10 +8,14 @@ import 'package:flutter_far_from_home/app_route_observer.dart';
 import 'package:flutter_far_from_home/router.dart';
 import 'package:flutter_far_from_home/auth_model.dart';
 
-void main() => runApp(Provider<AuthModel>(
-      builder: (context) => AuthModel(),
-      child: MyApp(),
-    ));
+void main() {
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  return runApp(Provider<AuthModel>(
+    builder: (context) => AuthModel(),
+    child: MyApp(),
+  ));
+}
 
 final AppRouteObserver routeObserver = AppRouteObserver();
 
