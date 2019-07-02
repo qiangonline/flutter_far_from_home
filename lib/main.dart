@@ -10,8 +10,9 @@ import 'package:flutter_far_from_home/auth_model.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  return runApp(Provider<AuthModel>(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  );
+  runApp(Provider<AuthModel>(
     builder: (context) => AuthModel(),
     child: MyApp(),
   ));
