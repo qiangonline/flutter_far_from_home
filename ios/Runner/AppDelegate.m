@@ -5,9 +5,11 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [GeneratedPluginRegistrant registerWithRegistry:self];
+    
+    [GeneratedPluginRegistrant registerWithRegistry:self];
+    [NSThread sleepForTimeInterval:1.0];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
   // Override point for customization after application launch.
-  //  [NSThread sleepForTimeInterval:2.0];
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
