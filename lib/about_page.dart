@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class AboutPage extends StatefulWidget {
   static const String routeName = '/about';
@@ -14,6 +15,26 @@ class _AboutPageState extends State<AboutPage> {
   double _width;
   double _height;
   Color _color;
+
+  void _animate() {
+    setState(() {
+      final random = Random();
+      _width = random.nextInt(300).toDouble();
+      _height = random.nextInt(300).toDouble();
+      _color = Color.fromRGBO(
+          random.nextInt(256), random.nextInt(256), random.nextInt(256), 1);
+    });
+  }
+
+  void _gotoDetail() {
+    Navigator.pushNamed(context, '/about/detail');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _animate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +55,12 @@ class _AboutPageState extends State<AboutPage> {
               ),
               RaisedButton(
                 child: Text('animate'),
-                onPressed: () {
-                  setState(() {
-                    final random = Random();
-                    _width = random.nextInt(300).toDouble();
-                    _height = random.nextInt(300).toDouble();
-                    _color = Color.fromRGBO(random.nextInt(256),
-                        random.nextInt(256), random.nextInt(256), 1);
-                  });
-                },
+                onPressed: _animate,
               ),
-              Text('about'),
+              RaisedButton(
+                child: Text('detail'),
+                onPressed: _gotoDetail,
+              ),
             ],
           ),
         ],
