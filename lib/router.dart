@@ -5,6 +5,7 @@ import 'package:flutter_far_from_home/auth_model.dart';
 import 'package:flutter_far_from_home/home_page.dart';
 import 'package:flutter_far_from_home/login_page.dart';
 import 'package:flutter_far_from_home/about_page.dart';
+import 'package:flutter_far_from_home/about_detail_page.dart';
 import 'package:flutter_far_from_home/my_page.dart';
 
 class Router {
@@ -25,6 +26,11 @@ class Router {
       case AboutPage.routeName:
         return MaterialPageRoute(
           builder: (context) => AboutPage(),
+          settings: settings,
+        );
+      case AboutDetailPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AboutDetailPage(),
           settings: settings,
         );
       case MyPage.routeName:
