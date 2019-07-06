@@ -10,7 +10,7 @@ import 'package:flutter_far_from_home/my_page.dart';
 
 class Router {
   static PageRoute generateRoute(BuildContext context, RouteSettings settings) {
-    print('.........');
+    print('generateRoute');
     switch (settings.name) {
       case HomePage.routeName:
         return MaterialPageRoute(

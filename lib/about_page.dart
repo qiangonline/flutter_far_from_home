@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class AboutPage extends StatefulWidget {
   static const String routeName = '/about';
@@ -11,7 +10,7 @@ class AboutPage extends StatefulWidget {
   _AboutPageState createState() => _AboutPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _AboutPageState extends State<AboutPage> with WidgetsBindingObserver {
   double _width;
   double _height;
   Color _color;
@@ -34,11 +33,7 @@ class _AboutPageState extends State<AboutPage> {
   void initState() {
     super.initState();
     _animate();
-  }
-
-  @override
-  void initState() {
-    super.initState();
+    WidgetsBinding.instance.addObserver(this);
     print('about page init');
   }
 
@@ -49,9 +44,22 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   @override
+  void deactivate() {
+    super.deactivate();
+    print('about page deactivate');
+  }
+
+  @override
   void dispose() {
     super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     print('about page dispose');
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state.toString());
   }
 
   @override

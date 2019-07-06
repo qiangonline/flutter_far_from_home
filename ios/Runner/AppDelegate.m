@@ -7,7 +7,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [GeneratedPluginRegistrant registerWithRegistry:self];
-    [NSThread sleepForTimeInterval:3.0];
+    [NSThread sleepForTimeInterval:1.0];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
   // Override point for customization after application launch.
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
