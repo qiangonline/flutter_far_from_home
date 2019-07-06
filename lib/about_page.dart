@@ -16,7 +16,26 @@ class _AboutPageState extends State<AboutPage> {
   Color _color;
 
   @override
+  void initState() {
+    super.initState();
+    print('about page init');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('about page change dependencies');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print('about page dispose');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('about page build');
     return Scaffold(
       appBar: AppBar(title: Text('about')),
       body: Row(
